@@ -1,0 +1,32 @@
+Integrantes:
+
+    -Kristhian David Segura
+    -Eduardo Ospina Mejia
+
+Condiciones de carrera:
+
+Las condiciones de carrera que se llegan a presentar se encuentran en:
+
+    -El método que agrega un nuevo plano.
+
+    -Cuando se desea hacer dos Puts al mismo tiempo sobre el mismo recurso.
+
+    -Cuando se desea hacer un Get al mismo recurso al que se le está haciendo un Put.
+
+Regiones críticas: 
+
+La región crítica del programa es:
+
+    -La colección de los Blueprints, ya que es donde se encuentran guardados todos los planos
+    y es donde se llegan a presentar los problemas concurrentes de la modificación de los valores y las variables.
+
+Todo esto se debe a que la colección no es thread-safe y causa que apliquen las condiciones de carrera sobre la región crítica, nuestra solución
+para el problema, sería cambiar Blueprintes de HashMap a ConcurrentHashMap, solucionando así los problemas de concurrencia del programa.
+
+ConcurrentHashMap:
+
+Una tabla hash que admita la simultaneidad total de las recuperaciones y la alta simultaneidad esperada para las actualizaciones.
+Esta clase obedece a la misma especificación funcional que Hashtable, e incluye versiones de métodos correspondientes a cada
+método de Hashtable. Sin embargo, a pesar de que todas las operaciones son seguras para subprocesos, las operaciones de recuperación
+no implican el bloqueo, y no hay ningún soporte para bloquear toda la tabla de una manera que impida todo acceso. Esta clase es totalmente
+interoperable con Hashtable en programas que se basan en su seguridad de subprocesos, pero no en sus detalles de sincronización.
