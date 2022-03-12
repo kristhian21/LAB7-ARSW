@@ -45,6 +45,10 @@ public class InMemoryBlueprintPersistence extends BlueprintsPersistence{
         Point[] pts5=new Point[]{new Point(220, 260),new Point(35, 55)};
         Blueprint bp5=new Blueprint("John", "plano_puente",pts5);
         blueprints.put(new Tuple<>(bp5.getAuthor(),bp5.getName()), bp5);
+        // Plano 7
+        Point[] pts6=new Point[]{new Point(120, 120),new Point(150, 230), new Point(450, 360),new Point(10, 175),new Point(110, 95)};
+        Blueprint bp6=new Blueprint("Carlos", "plano_edificio2",pts6);
+        blueprints.put(new Tuple<>(bp6.getAuthor(),bp6.getName()), bp6);
     }
 
     @Override

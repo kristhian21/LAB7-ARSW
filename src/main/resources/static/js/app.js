@@ -4,13 +4,14 @@ var app = (function(){
     var newAuthorName;
 
     // Get the apiclient or the apimock module
-    var _module = apiclient;
+    var module = apiclient;
 
     // Get elements
     var table = document.getElementById("tableBluePrints");
     var button = document.getElementById("authorNameButton");
     var currentBluePrint = document.getElementById("currentBluePrintName");
     var authorNameH = document.getElementById("authorName");
+    var canvas = document.getElementById("canvas");
 
     // Click button listener
     button.addEventListener("click", function(){
@@ -19,9 +20,10 @@ var app = (function(){
         clearData();
         // Update de author information
         updateName(newAuthorName);
-        _module.getBluePrintsByAuthor(newAuthorName);
+        module.getBluePrintsByAuthor(newAuthorName);
     });
 
+    // Updates the author name
     function updateName(newNameValue){
         if (newNameValue == "") {
             newNameValue = "All Blue prints";
@@ -29,6 +31,7 @@ var app = (function(){
         authorNameH.innerHTML = newNameValue;
     }
 
+    // Reset the author information
     function clearData(){
         var size = table.rows.length;
         for(var x=size-1; x > 0; x--){
@@ -36,8 +39,10 @@ var app = (function(){
         }
     }
 
+    // Draw the current blueprint in the canvas
     function drawBlueprint(bluePrintName){
         currentBluePrint.innerHTML = "Current Blueprint: " + bluePrintName;
+        module.getBlueprintsByNameAndAuthor(newAuthorName, bluePrintName);
     }
 
     return{
