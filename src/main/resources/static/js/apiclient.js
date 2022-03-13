@@ -21,11 +21,13 @@ var apiclient = (function() {
             });
         },
 
+
         getBlueprintsByNameAndAuthor: function (authorName, bpName){
             $.ajax({
                 type:'GET',
                 url: "http://localhost:8080/blueprints/"+authorName+"/"+bpName
             }).then(function(data) {
+                window.Pintado = true;
                 var canvas = document.getElementById("canvas");
                 var context = canvas.getContext("2d");
                 context.beginPath();
@@ -37,9 +39,18 @@ var apiclient = (function() {
                     context.lineTo(data["points"][index+1]["x"], data["points"][index+1]["y"]);
                     context.stroke();
                 }
+
+                window.point.map(function (func) {
+                    			context.lineTo(func.x, func.y);
+                    			context.stroke();
+                })
+
                 context.closePath();
+
             });
         }
+
+
     }
 })();
 

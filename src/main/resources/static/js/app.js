@@ -1,3 +1,7 @@
+var Pintado = false;
+var point = [];
+var bpname = "";
+
 var app = (function(){
 
     // Input of the author name
@@ -5,6 +9,8 @@ var app = (function(){
 
     // Get the apiclient or the apimock module
     var module = apiclient;
+
+
 
     // Get elements
     var table = document.getElementById("tableBluePrints");
@@ -39,14 +45,60 @@ var app = (function(){
         }
     }
 
+    function initMouse () {
+        		console.info('initialized');
+        		var canvas = document.getElementById("canvas"),
+        			context = canvas.getContext("2d");
+
+                var draw = Draw();
+
+        		if (window.PointerEvent) {
+        			canvas.addEventListener("pointerdown", Draw, false);
+        		}
+    }
+
+    function Draw () {
+        if(Pintado){
+                console.info("Entrar a pintado")
+        		var canvas = document.getElementById("canvas"),
+        			context = canvas.getContext("2d");
+        		var offsetleft = parseInt(getOffset(canvas).left, 10);
+        		var offsettop = parseInt(getOffset(canvas).top, 10);
+        		var x = event.pageX - offsetleft;
+        		var y = event.pageY - offsettop;
+        		var cordenadas = { "x": x, "y": y };
+        		point.push(cordenadas)
+        		module.getBlueprintsByNameAndAuthor(newAuthorName, bpname);
+        	}
+    }
+
+    function getOffset (obj) {
+    		var offsetLeft = 0;
+    		var offsetTop = 0;
+    		do {
+    			if (!isNaN(obj.offsetLeft)) {
+    				offsetLeft += obj.offsetLeft;
+    			}
+    			if (!isNaN(obj.offsetTop)) {
+    				offsetTop += obj.offsetTop;
+    			}
+    		} while (obj = obj.offsetParent);
+    		return { left: offsetLeft, top: offsetTop };
+    }
+
     // Draw the current blueprint in the canvas
     function drawBlueprint(bluePrintName){
         currentBluePrint.innerHTML = "Current Blueprint: " + bluePrintName;
+        bpname = bluePrintName;
         module.getBlueprintsByNameAndAuthor(newAuthorName, bluePrintName);
     }
 
+
+
     return{
-        draw:drawBlueprint
-    }
+        draw:drawBlueprint,
+        initMouse: initMouse
+
+    };
 
 })();
