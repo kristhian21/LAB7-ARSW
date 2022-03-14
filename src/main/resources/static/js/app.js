@@ -6,10 +6,10 @@ var app = (function(){
 
     // Input of the author name
     var newAuthorName;
+    var bandera = false;
 
     // Get the apiclient or the apimock module
     var module = apiclient;
-
 
 
     // Get elements
@@ -107,11 +107,18 @@ var app = (function(){
         module.getBluePrintsByAuthor(newAuthorName); 
     }
 
+    function createNewBp(){
+        result = window.prompt("Ingrese el nombre del nuevo plano", "Default name");
+        bpname = result;
+        module.postBluePrint(newAuthorName, result);
+    }
+
     return{
         draw:drawBlueprint,
         initMouse: initMouse,
         update: updateBluePrints,
-        reload: refresh
+        reload: refresh,
+        createBp: createNewBp
     };
 
 })();

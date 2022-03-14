@@ -71,6 +71,18 @@ var apiclient = (function() {
                     app.reload();
                 })        
             });
+        },
+
+        postBluePrint : function(author, newBluePrintName){
+            $.ajax({
+                type:'POST',
+                url: "http://localhost:8080/blueprints/add/",
+                data: JSON.stringify({"author":author,"points":[],"name":newBluePrintName}),
+                contentType: "application/json"
+            }).then(function() {
+                app.reload();
+                app.draw(newBluePrintName);
+            });
         }
 
 
