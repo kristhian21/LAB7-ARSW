@@ -90,6 +90,9 @@ var app = (function(){
     function drawBlueprint(bluePrintName){
         currentBluePrint.innerHTML = "Current Blueprint: " + bluePrintName;
         bpname = bluePrintName;
+        point = [];
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
         module.getBlueprintsByNameAndAuthor(newAuthorName, bluePrintName);
     }
 
