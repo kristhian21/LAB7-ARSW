@@ -2,6 +2,11 @@
 #### Procesos de desarrollo de software - PDSW
 #### Construción de un cliente 'grueso' con un API REST, HTML5, Javascript y CSS3. Parte II.
 
+## Integrantes:
+
+> Eduardo Ospina
+> Kristhian David Segura
+
 
 
 ![](img/mock2.png)
