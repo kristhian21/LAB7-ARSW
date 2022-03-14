@@ -97,11 +97,21 @@ var app = (function(){
     }
 
 
+    function updateBluePrints(){
+        module.putBluePrint(newAuthorName, bpname);  
+    }
+
+    function refresh(){
+        clearData();
+        updateName(newAuthorName);
+        module.getBluePrintsByAuthor(newAuthorName); 
+    }
 
     return{
         draw:drawBlueprint,
-        initMouse: initMouse
-
+        initMouse: initMouse,
+        update: updateBluePrints,
+        reload: refresh
     };
 
 })();

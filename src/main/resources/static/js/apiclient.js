@@ -41,12 +41,35 @@ var apiclient = (function() {
                 }
 
                 window.point.map(function (func) {
+                                console.log(func.x, func.y);
                     			context.lineTo(func.x, func.y);
                     			context.stroke();
                 })
 
                 context.closePath();
 
+            });
+        },
+
+        putBluePrint : function(authorName, bluePrintName){
+            $.ajax({
+                type:'GET',
+                url: "http://localhost:8080/blueprints/"+authorName+"/"+bluePrintName
+            }).then(function(data) {
+                // Agregar los puntos nuevos
+                for (let index = 0; index < window.point.length; index++) {
+                    data["points"].push(window.point[index]);
+                }
+                // PUT
+                $.ajax({
+                    type:'PUT',
+                    url: "http://localhost:8080/blueprints/"+authorName+"/"+bluePrintName,
+                    data: JSON.stringify(data),
+                    contentType: "application/json"
+                }).then(function(){
+                    window.point = [];
+                    app.reload();
+                })        
             });
         }
 
