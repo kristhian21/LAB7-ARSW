@@ -53,6 +53,10 @@ public abstract class BlueprintsPersistence {
         return result;
     };
 
+    public void deleteBluePrint(String author,String bprintname) throws BlueprintNotFoundException{
+        blueprints.remove(new Tuple<>(author, bprintname));
+    }
+
     /**
      *
      * @param author blueprint's author

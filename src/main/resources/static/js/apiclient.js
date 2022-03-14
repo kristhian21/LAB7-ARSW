@@ -83,6 +83,15 @@ var apiclient = (function() {
                 app.reload();
                 app.draw(newBluePrintName);
             });
+        },
+
+        deleteBluePrint : function(author, deleteBluePrintName){
+            $.ajax({
+                type:'DELETE',
+                url: "http://localhost:8080/blueprints/delete/" +author+ "/" + deleteBluePrintName,
+            }).then(function() {
+                app.reload();
+            });
         }
 
 

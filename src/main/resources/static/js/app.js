@@ -113,12 +113,20 @@ var app = (function(){
         module.postBluePrint(newAuthorName, result);
     }
 
+    function deleteBp(){
+        module.deleteBluePrint(newAuthorName, bpname);
+        currentBluePrint.innerHTML = "Current Blueprint: ";
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
     return{
         draw:drawBlueprint,
         initMouse: initMouse,
         update: updateBluePrints,
         reload: refresh,
-        createBp: createNewBp
+        createBp: createNewBp,
+        delete: deleteBp
     };
 
 })();

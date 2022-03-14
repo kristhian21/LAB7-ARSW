@@ -72,5 +72,9 @@ public class BluePrintsServices {
         }
     }
 
+    public void deleteBluePrint(String author, String deleteBluePrint)throws BlueprintNotFoundException{
+        bpp.deleteBluePrint(author, deleteBluePrint);
+    }
+
 }
 

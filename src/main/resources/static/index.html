@@ -47,7 +47,7 @@
             <div class="card" style="width: 90%; margin: 2%; padding: 2%;">
                 <h3 class="text-primary" id="currentBluePrintName">Current Blueprint: </h3>
                 <div>
-                    <button id="crearBlueprint" onclick="app.createBp()" type='button' class='btn btn-dark'> create new blueprint</button>
+                    <button id="crearBlueprint" onclick="app.createBp()" type='button' class='btn btn-primary'> Create new blueprint</button>
                 </div>
                 <br>
                 <br>
@@ -56,10 +56,10 @@
                 <div id = "cuerpoSaveUpdate">
                     <br>
                     <button onclick="app.update()" type='button' class='btn btn-success' >
-                        save/update
+                        Save/Update
                     </button>
-                    <button type='button' class='btn btn-danger' >
-                        delete
+                    <button type='button' onclick="app.delete()" class='btn btn-danger' >
+                        Delete
                     </button>
                 </div>
             </div>
